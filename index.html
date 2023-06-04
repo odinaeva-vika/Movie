@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.min.css?_v=20230604201223">
+  <title>Список фильмов</title>
+</head>
+<body>
+  <div class="wrapper">
+    
+    <main class="main">
+      <section class="list">
+        <div class="container">
+          <div class="list__box">
+            <h1 class="list__title">Список фильмом</h1>
+          </div>
+
+          <div class="list-box">
+            <div class="wrapper">
+              <form id="taskForm" class="form">
+                <input id="taskInput" class="form__input" placeholder="Добавить фильм" type="text" required>
+                <button class="form__button" type="submit"><img src="img/button-save.svg" alt="Кнопка сохранить фильм в список"></button>
+              </form>
+
+              <div class="form-group">
+                <div class="dropdown">
+                  <button class="dropdown__button">Весь список фильмом</button>
+                  <ul class="dropdown__list">
+                    <li class="dropdown__list-item" data-value="1">Весь список фильмом</li>
+                    <li class="dropdown__list-item" data-value="2">Просмотренные фильмы</li>
+                    <li class="dropdown__list-item" data-value="3">Посмотреть фильмы</li>
+                  </ul>
+                  <input type="text" name="select-category" value="" class="dropdown__input-hidden">
+                </div>
+              </div>
+            </div>
+
+            <div id="taskBox" class="boxes">
+              <!-- <div class="box">
+                <label class="box__label">
+                  <input class="box__input" type="checkbox" name="color-5" value="green">
+                  <span data-action="done"></span>
+                </label>
+                <h2 class="box__title">Остров проклятых</h2>
+                <button data-action="delete" class="box__button"><img src="img/close.svg" alt="Удалить фильм из списка"></button>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- <footer>футер</footer> -->
+  </div>
+  <script src="js/app.min.js?_v=20230604201223"></script>
+</body>
+</html>
