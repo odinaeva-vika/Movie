@@ -1,30 +1,30 @@
-const taskForm = document.querySelector("#taskForm"),
-      taskInput = document.querySelector("#taskInput"),
-      taskBox = document.querySelector("#taskBox");
+const taskForm = document.getElementById("taskForm"),
+      taskInput = document.getElementById("taskInput"),
+      taskBox = document.getElementById("taskBox");
 
-const taskInputValue = () => taskInput.value;
-const lists = [];
+const getInputValue = () => taskInput.value;
+const arrlists = [];
 
-taskForm.addEventListener("submit", (e) => {
+const getTaskForm = (e) => {
    e.preventDefault();
 
-  arrList();
-  getNewListFromUser();
+  createList();
+  renderNewListFromUser();
   clearInput();
-});
+};
 
 function List(title) {
   this.list = title;
   this.completed = false;
-}
+};
 
-const arrList = () => {
-  lists.push(new List(taskInputValue()));
-}
+const createList = () => {
+  arrlists.push(new List(getInputValue()));
+};
 
 const clearInput = () => {
-    taskInput.value = "";
-  }
+  taskInput.value = "";
+};
 
 const createListItemHTML = (item, index) => `
 <div class="box ${item.completed ? 'box--action' : ''}" data-index="${index}">
@@ -39,22 +39,32 @@ const createListItemHTML = (item, index) => `
 </div>
 `;
 
-const getNewListFromUser = () => {
-  taskBox.innerHTML = lists
+const renderNewListFromUser = () => {
+  taskBox.innerHTML = arrlists
     .map((item, index) => createListItemHTML(item, index))
     .join('');
 };
 
-taskBox.addEventListener("click", (e) => {
+const deleteTaskBox = (e) => {
   if (e.target.dataset.action === "delete") {
     const parentNode = e.target.closest(".box");
     const index = parseInt(parentNode.dataset.index, 10);
     parentNode.remove();
-    lists.splice(index, 1);
-  } else if (e.target.dataset.action === "done") {
+    arrlists.splice(index, 1);
+  }
+  return
+};
+
+const doneTaskBox = (e) => {
+  if (e.target.dataset.action === "done") {
     const parentNode = e.target.closest(".box");
     parentNode.classList.toggle("box--action");
     const index = parseInt(parentNode.dataset.index, 10);
-    lists[index].completed = parentNode.classList.contains("box--action");
+    arrlists[index].completed = parentNode.classList.contains("box--action");
   }
-});
+  return
+};
+
+taskForm.addEventListener("submit", getTaskForm)
+taskBox.addEventListener("click", deleteTaskBox);
+taskBox.addEventListener("click", doneTaskBox);

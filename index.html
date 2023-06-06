@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/style.min.css?_v=20230604201223">
+  <link rel="stylesheet" href="css/style.min.css?_v=20230606193656">
   <title>Список фильмов</title>
 </head>
 <body>
@@ -26,13 +26,13 @@
 
               <div class="form-group">
                 <div class="dropdown">
-                  <button class="dropdown__button">Весь список фильмом</button>
-                  <ul class="dropdown__list">
+                  <button id="dropdownBtn" class="dropdown__button">Весь список фильмом</button>
+                  <ul id="dropdownList" class="dropdown__list">
                     <li class="dropdown__list-item" data-value="1">Весь список фильмом</li>
                     <li class="dropdown__list-item" data-value="2">Просмотренные фильмы</li>
                     <li class="dropdown__list-item" data-value="3">Посмотреть фильмы</li>
                   </ul>
-                  <input type="text" name="select-category" value="" class="dropdown__input-hidden">
+                  <input id="dropdownInput" type="text" name="select-category" value="" class="dropdown__input-hidden">
                 </div>
               </div>
             </div>
@@ -53,6 +53,6 @@
     </main>
     <!-- <footer>футер</footer> -->
   </div>
-  <script src="js/app.min.js?_v=20230604201223"></script>
+  <script type="module" src="js/app.min.js?_v=20230606193656"></script>
 </body>
 </html>

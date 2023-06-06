@@ -1,19 +1,25 @@
-const dropDownBtn = document.querySelector(".dropdown__button"),
-      dropDownList = document.querySelector(".dropdown__list"),
-      dropDownListItem = dropDownList.querySelectorAll(".dropdown__list-item"),
-      dropDownInput = document.querySelector(".dropdown__input-hidden");
+const dropDownBtn = document.getElementById("dropdownBtn");
+const dropDownList = document.getElementById("dropdownList");
+const dropDownListItem = dropDownList.querySelectorAll(".dropdown__list-item");
+const dropDownInput = document.getElementById("dropdownInput");
+let currentFilterValue = "";
 
-dropDownBtn.addEventListener("click", () => {
+const toggleDropDown = () => {
   dropDownList.classList.toggle("dropdown__list--visible");
-  dropDownList.classList.toggle("dropdown__button--active");
-});
+  dropDownBtn.classList.toggle("dropdown__button--active");
+};
 
-const filterList = (filterValue) => {
-  const boxes = taskBox.querySelectorAll('.box');
+const filterList = () => {
+  const boxes = document.querySelectorAll('.box');
 
-    boxes.forEach((box) => {
+  boxes.forEach((box) => {
     const isAction = box.classList.contains('box--action');
-    box.style.display = (filterValue === '1' || (filterValue === '2' && isAction) || (filterValue === '3' && !isAction)) ? 'flex' : 'none';
+    box.style.display =
+      (currentFilterValue === '1' ||
+        (currentFilterValue === '2' && isAction) ||
+        (currentFilterValue === '3' && !isAction))
+        ? 'flex'
+        : 'none';
   });
 };
 
@@ -22,16 +28,19 @@ dropDownListItem.forEach((listItem) => {
     e.stopPropagation();
     dropDownBtn.innerText = this.innerText;
     dropDownBtn.focus();
-    dropDownInput.value = this.dataset.value;
+    currentFilterValue = this.dataset.value;
+    dropDownInput.value = currentFilterValue;
     dropDownList.classList.remove("dropdown__list--visible");
-    const filterValue = this.dataset.value;
-    filterList(filterValue);
-  })
+    filterList();
+  });
 });
 
-document.addEventListener("click", (e) => {
+const closeDropDown = (e) => {
   if (e.target !== dropDownBtn) {
     dropDownBtn.classList.remove("dropdown__button--active");
     dropDownList.classList.remove("dropdown__list--visible");
   }
-});
+};
+
+dropDownBtn.addEventListener("click", toggleDropDown);
+document.addEventListener("click", closeDropDown);
