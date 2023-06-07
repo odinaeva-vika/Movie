@@ -1,7 +1,8 @@
-const dropDownBtn = document.getElementById("dropdownBtn");
-const dropDownList = document.getElementById("dropdownList");
-const dropDownListItem = dropDownList.querySelectorAll(".dropdown__list-item");
-const dropDownInput = document.getElementById("dropdownInput");
+const dropDownBtn = document.getElementById("dropdownBtn"),
+      dropDownList = document.getElementById("dropdownList"),
+      dropDownListItem = dropDownList.querySelectorAll(".dropdown__list-item"),
+      dropDownInput = document.getElementById("dropdownInput");
+      
 let currentFilterValue = "";
 
 const toggleDropDown = () => {

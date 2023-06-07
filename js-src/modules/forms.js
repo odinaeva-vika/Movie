@@ -65,6 +65,6 @@ const doneTaskBox = (e) => {
   return
 };
 
-taskForm.addEventListener("submit", getTaskForm)
+taskForm.addEventListener("submit", getTaskForm);
 taskBox.addEventListener("click", deleteTaskBox);
 taskBox.addEventListener("click", doneTaskBox);
