@@ -393,11 +393,11 @@ body {
 }
 
 .box__title {
-  overflow: hidden;
   max-width: 665px;
   font-size: 20px;
   line-height: 23px;
   letter-spacing: -0.02em;
+  word-wrap: break-word;
 }
 
 .box__button {
