@@ -24,6 +24,16 @@ html {
           box-sizing: inherit;
 }
 
+:focus,
+:active {
+  /* outline: none; */
+}
+
+a:focus,
+a:active {
+  /* outline: none; */
+}
+
 a {
   vertical-align: baseline;
   background: transparent;
@@ -383,6 +393,8 @@ body {
 }
 
 .box__title {
+  overflow: hidden;
+  max-width: 665px;
   font-size: 20px;
   line-height: 23px;
   letter-spacing: -0.02em;
