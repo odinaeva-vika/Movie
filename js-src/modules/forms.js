@@ -8,6 +8,10 @@ const arrlists = [];
 const getTaskForm = (e) => {
    e.preventDefault();
 
+  const inputValue = getInputValue();
+  if (inputValue.trim().length === 0) {
+    return;
+  }
   createList();
   renderNewListFromUser();
   clearInput();
@@ -24,6 +28,7 @@ const createList = () => {
 
 const clearInput = () => {
   taskInput.value = "";
+  taskInput.focus();
 };
 
 const createListItemHTML = (item, index) => `
