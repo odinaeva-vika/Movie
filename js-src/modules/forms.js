@@ -50,32 +50,17 @@ const renderTaskList = () => {
     .join('');
 };
 
-const deleteTask = (e) => {
-  if (e.target.dataset.action === "delete") {
-    const parentNode = e.target.closest(".box");
-    const index = parseInt(parentNode.dataset.index, 10);
-    parentNode.remove();
-    taskLists.splice(index, 1);
-  }
-  return;
-};
-
-const toggleTaskCompletion = (e) => {
-  if (e.target.dataset.action === "done") {
-    const parentNode = e.target.closest(".box");
-    parentNode.classList.toggle("box--action");
-    const index = parseInt(parentNode.dataset.index, 10);
-    taskLists[index].completed = parentNode.classList.contains("box--action");
-  }
-  return;
-};
-
 const handleTaskAction = (e) => {
   const action = e.target.dataset.action;
+  const parentNode = e.target.closest(".box");
+  const index = parseInt(parentNode.dataset.index, 10);
+
   if (action === "delete") {
-    deleteTask(e);
+    taskLists.splice(index, 1);
+    parentNode.remove();
   } else if (action === "done") {
-    toggleTaskCompletion(e);
+    taskLists[index].completed = !taskLists[index].completed;
+    parentNode.classList.toggle("box--action");
   }
 };
 
