@@ -1,19 +1,19 @@
-const taskForm = document.getElementById("taskForm"),
-      taskInput = document.getElementById("taskInput"),
-      taskBox = document.getElementById("taskBox");
+const formNode = document.getElementById("form"),
+      inputNode = document.getElementById("input"),
+      boxNode = document.getElementById("box");
 
-const getInputValue = () => taskInput.value;
-const taskLists = [];
+const getInputValue = () => inputNode.value;
+const movies = [];
 
-const getTaskForm = (e) => {
+const getFormUser = (e) => {
   e.preventDefault();
 
   const inputValue = getInputValue();
   if (inputValue.trim().length === 0) {
     return;
   }
-  createList();
-  renderTaskList();
+  createListMovies();
+  renderListMovie();
   clearInput();
 };
 
@@ -22,13 +22,13 @@ function List(title) {
   this.completed = false;
 }
 
-const createList = () => {
-  taskLists.push(new List(getInputValue()));
+const createListMovies = () => {
+  movies.push(new List(getInputValue()));
 };
 
 const clearInput = () => {
-  taskInput.value = "";
-  taskInput.focus();
+  inputNode.value = "";
+  inputNode.focus();
 };
 
 const createListItemHTML = (item, index) => `
@@ -44,25 +44,25 @@ const createListItemHTML = (item, index) => `
 </div>
 `;
 
-const renderTaskList = () => {
-  taskBox.innerHTML = taskLists
+const renderListMovie = () => {
+  boxNode.innerHTML = movies
     .map((item, index) => createListItemHTML(item, index))
     .join('');
 };
 
-const handleTaskAction = (e) => {
+const handleAction = (e) => {
   const action = e.target.dataset.action;
   const parentNode = e.target.closest(".box");
   const index = parseInt(parentNode.dataset.index, 10);
 
   if (action === "delete") {
-    taskLists.splice(index, 1);
+    movies.splice(index, 1);
     parentNode.remove();
   } else if (action === "done") {
-    taskLists[index].completed = !taskLists[index].completed;
+    movies[index].completed = !movies[index].completed;
     parentNode.classList.toggle("box--action");
   }
 };
 
-taskForm.addEventListener("submit", getTaskForm);
-taskBox.addEventListener("click", handleTaskAction);
+formNode.addEventListener("submit", getFormUser);
+boxNode.addEventListener("click", handleAction);
